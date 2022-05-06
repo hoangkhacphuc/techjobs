@@ -23,6 +23,12 @@
         $str_values = substr($str_values, 0, -1);
         $query = "INSERT INTO `$table` ($str_keys) VALUES ($str_values)";
         $result = $GLOBALS['conn']->query($query);
+        if (!$result)
+            return false;
+
+        $result = mysqli_insert_id($GLOBALS['conn']);
+        $result = db_select($table, "`id` = $result");
+
         return $result;
     }
     
