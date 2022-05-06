@@ -374,6 +374,7 @@ function logout()
         'data' => ''
     );
     echo json_encode($response);
+
     return;
 }
 
