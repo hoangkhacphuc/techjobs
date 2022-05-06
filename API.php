@@ -111,8 +111,7 @@ switch($_GET['action'])
         }
         register_employers($_POST['email'], $_POST['pass'], $_POST['name'], $_POST['sdt'], $_POST['cong_ty'], $_POST['dia_chi'], $_POST['thanh_pho']);
         return;
-    case 'logout':
-        logout();
+    case '';
         return;
     default:
         $response = array(
@@ -350,32 +349,6 @@ function register_employers($email, $pass, $name, $sdt, $cong_ty, $dia_chi, $tha
         'data' => ''
     );
     echo json_encode($response);
-}
-
-// ĐĂNG XUẤT
-
-function logout()
-{
-    if (!isset($_SESSION["permission"]) && !isset($_SESSION["user"]))
-    {
-        $response = array(
-            'status' => false,
-            'message' => 'Vui lòng đăng nhập và thực hiện lại',
-            'data' => ''
-        );
-        echo json_encode($response);
-        return;
-    }
-    session_unset();
-    session_destroy();
-    $response = array(
-        'status' => true,
-        'message' => 'Đã đăng xuất tài khoản',
-        'data' => ''
-    );
-    echo json_encode($response);
-
-    return;
 }
 
 // *************************** FUNCTION HANDLE ***************************
