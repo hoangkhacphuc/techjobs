@@ -1,0 +1,8 @@
+- Template quản lý của Admin : Able Pro Bootstrap 4
+- FE : 
+	- Framework Bootstrap 
+	- Plugin Sweet Alert
+	- Plugin Owl Carousel
+	- Plugin Popper
+	- Plugin Select2
+	- Font Awesome Icons
