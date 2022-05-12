@@ -44,8 +44,8 @@ foreach($data_check_role as $userrole) {
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
+                                    <th>Tên</th>
+                                    <th>Mô tả</th>
                                     <th></th>
                                 </tr>
                             </thead>

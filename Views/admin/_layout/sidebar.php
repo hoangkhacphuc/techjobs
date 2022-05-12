@@ -92,9 +92,7 @@
 					    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Component</span></a>
 					    <ul class="pcoded-submenu">
 					        <li><a href="?c=Career&a=Index">Careers</a></li>
-					        <li><a href="?c=Role&a=Index">Roles</a></li>
 					        <li><a href="?c=Post&a=ListPosts">Post</a></li>
-							<li><a href="?c=Post&a=ListAdminReports">List Reports</a></li>
 					    </ul>
 					</li>
 					<li class="nav-item pcoded-hasmenu">

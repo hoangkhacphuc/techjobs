@@ -98,7 +98,7 @@ foreach($data_check_role as $userrole) {
                                 <div class="row align-items-center">
                                     <div class="col-8">
                                         <h4 class="text-c-yellow"><?php if($numOfUsers == null) { echo "0"; } else { echo $numOfUsers[0];} ?></h4>
-                                        <h6 class="text-muted m-b-0">All Users</h6>
+                                        <h6 class="text-muted m-b-0">Người dùng</h6>
                                     </div>
                                     <div class="col-4 text-right">
                                         <i class="feather icon-bar-chart-2 f-28"></i>
@@ -108,7 +108,7 @@ foreach($data_check_role as $userrole) {
                             <div class="card-footer bg-c-green">
                                 <div class="row align-items-center">
                                     <div class="col-9">
-                                        <p class="text-white m-b-0">% change</p>
+                                        <p class="text-white m-b-0">% thay đổi</p>
                                     </div>
                                     <div class="col-3 text-right">
                                         <i class="feather icon-trending-up text-white f-16"></i>
@@ -133,7 +133,7 @@ foreach($data_check_role as $userrole) {
                             <div class="card-footer bg-c-green">
                                 <div class="row align-items-center">
                                     <div class="col-9">
-                                        <p class="text-white m-b-0">% change</p>
+                                        <p class="text-white m-b-0">% thay đổi</p>
                                     </div>
                                     <div class="col-3 text-right">
                                         <i class="feather icon-trending-up text-white f-16"></i>
@@ -158,7 +158,7 @@ foreach($data_check_role as $userrole) {
                             <div class="card-footer bg-c-red">
                                 <div class="row align-items-center">
                                     <div class="col-9">
-                                        <p class="text-white m-b-0">% change</p>
+                                        <p class="text-white m-b-0">% thay đổi</p>
                                     </div>
                                     <div class="col-3 text-right">
                                         <i class="feather icon-trending-down text-white f-16"></i>
@@ -183,7 +183,7 @@ foreach($data_check_role as $userrole) {
                             <div class="card-footer bg-c-blue">
                                 <div class="row align-items-center">
                                     <div class="col-9">
-                                        <p class="text-white m-b-0">% change</p>
+                                        <p class="text-white m-b-0">% thay đổi</p>
                                     </div>
                                     <div class="col-3 text-right">
                                         <i class="feather icon-trending-down text-white f-16"></i>

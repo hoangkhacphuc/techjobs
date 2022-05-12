@@ -36,7 +36,8 @@ foreach($data_check_role as $userrole) {
                         </tr>
                         <?php foreach($dataCandApply as $item) { ?>
                         <tr>
-                            <td><?=$item[11] ?></td>
+                            <td><a href="?c=Job&a=ChiTiet&id=<?=$item[6] ?>"><?=$item[11] ?></a></td>
+                            
                             <td><?=$item[5] ?></td>
                             <td><?=$item[8] ?><br/><?=$item[9] ?></td>
                             <td>

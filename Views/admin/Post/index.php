@@ -37,15 +37,15 @@ foreach($data_check_role as $userrole) {
                         <h5>Danh sách tin tức</h5>
                         <!-- <a href="?c=Career&a=Create" class="btn-sm btn-primary float-right"><i class="feather icon-plus"></i> Thêm Mới</a> -->
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="overflow-y: auto">
                         <table class="display table table-striped table-hover" >
                             <thead>
                                 <tr>
-                                    <th style="width: 120px">Thumbnail</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>CreatedOn/ UpdatedOn</th>
-                                    <th>Status</th>
+                                    <th style="width: 120px">Hình ảnh</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Tác giả</th>
+                                    <th>Ngày tạo/update</th>
+                                    <th>Trạng thái</th>
                                     <th></th>
                                 </tr>
                             </thead>

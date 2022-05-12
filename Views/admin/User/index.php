@@ -34,7 +34,7 @@ foreach($data_check_role as $userrole) {
                 <div class="card">
 
                     <div class="card-header">
-                        <h5>Danh sách users</h5>
+                        <h5>Danh sách người dùng</h5>
                         <a href="?c=Career&a=Create" class="btn-sm btn-primary float-right"><i class="feather icon-plus"></i> Thêm Mới</a>
                     </div>
                     <div class="card-body">
@@ -43,7 +43,7 @@ foreach($data_check_role as $userrole) {
                                 <tr>
                                     <th>ID</th>
                                     <th>Email</th>
-                                    <th>Status</th>
+                                    <th>Trạng thái</th>
                                     <th></th>
                                 </tr>
                             </thead>

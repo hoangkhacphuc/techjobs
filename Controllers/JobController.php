@@ -598,7 +598,41 @@
             require_once ROOT . '/Views/client/Job/list_apply.php';
         }
 
-        
+        // - ReadCandidateApply() -> Ứng Viên xem CHI TIẾT lại đơn đã ứng tuyển ở Client
+        function ReadCandidateApply () {
+            $id = $_GET['id'];
+            include ROOT. '/Common/database.php'; 
+            $query = "SELECT candidate_apply.*, jobs.position, users.*, user_company.*  FROM candidate_apply, users, jobs, user_company 
+            WHERE candidate_apply.user_id = users.id AND jobs.id = candidate_apply.job_id
+            AND user_company.user_id = jobs.created_by
+            AND jobs.is_active = 1 AND candidate_apply.id = $id";
+
+            
+
+            $result = $mysqli->query($query);
+            $data = $result->fetch_all();
+
+            if (count($data) == 0) {
+                header('location: index.php?c=Home&a=Index');
+            } else {
+                $candidate = $data[0];
+
+                $sqlExperiences = "SELECT * FROM experiences, users, user_experiences 
+                WHERE experiences.id = user_experiences.experience_id
+                AND user_experiences.user_id = users.id 
+                AND users.id = $candidate[7]";
+                $resultExperiences = $mysqli->query($sqlExperiences);
+                $dataExperiences = $resultExperiences->fetch_all();
+
+                $sqlSkills = "SELECT skills.name, skills.level FROM skills, users, user_skills 
+                WHERE skills.id = user_skills.skill_id AND user_skills.user_id = users.id
+                AND users.id = $candidate[7]";
+                $resultSkills = $mysqli->query($sqlSkills);
+                $dataSkills = $resultSkills->fetch_all();
+
+                require_once ROOT . '/Views/client/Job/detail_resume.php';
+            }
+        }
 
         // - CandidateApply() -> Ứng Viên ứng tuyển công việc
         function CandidateApply()
@@ -620,11 +654,20 @@
                 $update_on= $newDateNow;
 
                 $is_active = 1; // 1 -> Active // 0 -> InActive
-
+                $newfilename = "";
                 // Xử lý ảnh
-                $temp = explode(".", $_FILES["Resume"]["name"]);
-                $newfilename = round(microtime(true)) . '.' . end($temp);
-                move_uploaded_file($_FILES['Resume']['tmp_name'], "Assets/upload/resume/".$newfilename);
+
+
+                
+                if (isset($_FILES["Resume"]))
+                {
+                    $temp = explode(".", $_FILES["Resume"]["name"]);
+                    if (end($temp) == "pdf")
+                    {
+                        $newfilename = round(microtime(true)) . '.' . end($temp);
+                        move_uploaded_file($_FILES['Resume']['tmp_name'], "Assets/upload/resume/".$newfilename);
+                    }
+                }
 
                 $resume = $newfilename;
                 
@@ -640,7 +683,6 @@
                 if($result2) {
                     setcookie("status", "Created successfully!", time() + 3, "/");
                     setcookie("status_code", "success", time() + 3, "/");
-
                     header("location: index.php?c=Job&a=CandidateApplySuccess");
                 } else {
                     setcookie("status", "Data not created successfully!", time() + 3, "/");

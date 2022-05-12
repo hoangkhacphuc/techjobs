@@ -692,7 +692,7 @@
                 $resultS1 = $mysqli->query($queryS1);
 
                 if($resultS1) {
-                    setcookie("status", "Active tài khoản thành công!", time() + 3, "/");
+                    setcookie("status", "Kích hoạt tài khoản thành công!", time() + 3, "/");
                     setcookie("status_code", "success", time() + 3, "/");
 
                     header('location: index.php?c=User&a=ListUser');

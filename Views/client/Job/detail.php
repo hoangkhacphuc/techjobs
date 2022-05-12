@@ -22,7 +22,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="?c=Job&a=CandidateApply" method="POST">
+      <form action="?c=Job&a=CandidateApply" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="JobId" value="<?= $job[0] ?>">
       <input type="hidden" name="UserId" value="<?= $user_id[0] ?>">
       <div class="modal-body">
@@ -30,8 +30,8 @@
         <div class="row">
           <div class="col-md-12">
           <div class="form-group input-file-container">
-            <input type="file" name="Resume" id="file" class="input-file" />
-              <label tabindex="0" for="my-file" class="input-file-trigger">Tải lên hồ sơ của bạn...</label>
+            <input type="file" name="Resume" id="file" class="input-file"/>
+              <label tabindex="0" for="file" class="input-file-trigger">Tải lên hồ sơ của bạn...</label>
               <p class="file-return"></p>
           </div>
           </div>
@@ -141,7 +141,11 @@ Xin trân trọng cảm ơn,
         <div class="col-md-3 col-sm-12 col-12">
           <div class="jd-header-wrap-right">
             <div class="jd-center">
-              <a href="javascript:void(0);" class="btn btn-primary btn-apply" data-toggle="modal" data-target="#apply">Nộp đơn</a>
+              <?php if (isset($user_id[1])) : ?>
+              <a href="javascript:void(0)" class="btn btn-primary btn-apply" data-toggle="modal" data-target="#apply">Nộp đơn</a>
+              <?php else : ?>
+                <a href="?c=User&a=DangNhapUser" class="btn btn-primary btn-apply">Nộp đơn</a>
+              <?php endif; ?>
             </div>
           </div>
         </div>
@@ -492,7 +496,7 @@ Xin trân trọng cảm ơn,
     font-weight: bold;
   }
   .js .file-return:not(:empty):before {
-    content: "Selected file: ";
+    content: "Chọn file: ";
     font-style: normal;
     font-weight: normal;
   } /* Useless styles, just for demo styles */
@@ -514,7 +518,22 @@ button.addEventListener( "click", function( event ) {
    return false;
 });
 fileInput.addEventListener( "change", function( event ) {
+
+  if (this.value == "")
+  {
     the_return.innerHTML = this.value;
+    return;
+  }
+  
+    let val = this.value;
+    
+    var allowedExtensions = /(\.pdf)$/i;
+    if(!allowedExtensions.exec(val))
+    {
+      the_return.innerHTML = "Định dạng file không đúng!";
+      this.value = "";
+    }
+    else the_return.innerHTML = val;
 });
 </script>
 
