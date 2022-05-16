@@ -773,6 +773,64 @@
                 }
         }
 
+        // - Xóa tài khoản ở ADMIN
+        function Delete()
+        {
+            if (!isset($_GET['id'])) {
+                header('location: index.php?c=User&a=ListUser');
+                return;
+            } 
+            $id = $_GET['id'];
+            include ROOT. '/Common/database.php'; 
+
+            $query = "DELETE FROM save_jobs WHERE user_id='$id'";
+            $result = $mysqli->query($query);
+            
+            $query = "DELETE FROM userrole WHERE user_id='$id'";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE FROM user_company WHERE user_id='$id'";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE FROM user_experiences WHERE user_id='$id'";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE FROM user_skills WHERE user_id='$id'";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE FROM candidate_apply WHERE user_id='$id'";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE ca FROM post_tag as ca, (SELECT * FROM posts WHERE posts.created_by = '$id') as j WHERE ca.post_id = j.id";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE FROM posts WHERE created_by='$id'";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE jc FROM job_career as jc, (SELECT * FROM jobs WHERE jobs.created_by = '$id') as j WHERE jc.job_id = j.id";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE ca FROM candidate_apply as ca, (SELECT * FROM jobs WHERE jobs.created_by = '$id') as j WHERE ca.job_id = j.id";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE ca FROM save_jobs as ca, (SELECT * FROM jobs WHERE jobs.created_by = '$id') as j WHERE ca.job_id = j.id";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE FROM jobs WHERE created_by='$id'";
+            $result = $mysqli->query($query);
+
+            $query = "DELETE FROM users WHERE id='$id'";
+            $result = $mysqli->query($query);
+
+            // Tạo modal dialog thông báo trạng thái CRUD
+
+            setcookie("status", "Deleted data successfully!", time() + 1, "/");
+            setcookie("status_code", "success", time() + 1, "/");
+
+            header('location: index.php?c=User&a=ListUser');
+
+        }
+
         // Cập nhật avatar --> vai trò Admin
         function AdminUpdateAvatar () {
             $id = $_POST["id"];
@@ -806,6 +864,8 @@
 
         }
 
+        
+        
 
         // -- // -- // -- // -- // ... ... // -- // -- // -- // -- //
 

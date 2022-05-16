@@ -63,9 +63,6 @@ foreach($data_check_role as $userrole) {
                                         <a class="btn-sm btn-icon btn-primary" href="?c=Role&a=Update&id=<?= $role[0] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
                                             <i class="feather icon-edit-2"></i>
                                         </a>
-                                        <a class="btn-sm btn-icon btn-danger" href="?c=Role&a=Delete&id=<?= $role[0] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove">
-                                            <i class="feather icon-trash-2"></i>
-                                        </a>
                                     </td>
                                  
                                 </tr>

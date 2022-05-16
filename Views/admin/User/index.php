@@ -67,10 +67,7 @@ foreach($data_check_role as $userrole) {
                                         <a class="btn-sm btn-icon btn-primary" href="?c=Role&a=UserAuthen&id=<?= $user3[0] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Phân quyền">
                                             <i class="feather icon-shield"></i>
                                         </a>
-                                        <a class="btn-sm btn-icon btn-primary" href="?c=Career&a=Update&id=<?= $user3[0] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xem chi tiết">
-                                            <i class="feather icon-eye"></i>
-                                        </a>
-                                        <a class="btn-sm btn-icon btn-danger" href="?c=Career&a=Delete&id=<?= $user3[0] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Khóa tài khoản">
+                                        <a class="btn-sm btn-icon btn-danger" href="?c=User&a=Delete&id=<?= $user3[0] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa tài khoản">
                                             <i class="feather icon-trash-2"></i>
                                         </a>
                                     </td>

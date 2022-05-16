@@ -100,21 +100,15 @@
             } else {
                 $id = $_GET['id'];
                 include ROOT. '/Common/database.php'; 
+
+                $query = "DELETE ca FROM job_career as ca, (SELECT * FROM careers WHERE careers.id = '$id') as j WHERE ca.career_id = j.id";
+                $result = $mysqli->query($query);
+
                 $query = "DELETE FROM careers WHERE id='$id'";
                 $mysqli->query($query);
+
                 
-                // Tạo modal dialog thông báo trạng thái CRUD
-                if(!$result) {
-                    setcookie("status", "Deleted data successfully!", time() + 1, "/");
-                    setcookie("status_code", "success", time() + 1, "/");
-
-                    
-                } else {
-                    setcookie("status", "Data not deleted successfully!", time() + 1, "/");
-                    setcookie("status_code", "error", time() + 1, "/");
-
-                }
-
+                
                 header('location: index.php?c=Career&a=Index');
 
             }

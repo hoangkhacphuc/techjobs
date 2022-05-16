@@ -29,8 +29,8 @@
         });
         </script>
     <?php 
-        setcookie("status", "", time() - 3600);
-        setcookie("status_code", "", time() - 3600);
+        // setcookie("status", "", time() - 3600);
+        // setcookie("status_code", "", time() - 3600);
         } 
     ?>
 </body>
